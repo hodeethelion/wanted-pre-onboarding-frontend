@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# 템플릿
+지원자의 성명: 이호준
+프로젝트의 실행 방법: cra 등등으로 만들기
+- 데모 영상: 영상 첨부하기
+- 배포 링크: 링크 첨부하기
+--- 
+# 기존 세팅
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
