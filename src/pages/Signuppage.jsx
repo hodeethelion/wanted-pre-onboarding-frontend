@@ -31,10 +31,12 @@ const Signuppage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('form: ', form)
     axios.post("http://localhost:8000/auth/signup", form)
     .then((response) => {
         console.log(response);
         if (response.status === 201){
+            alert('아이디가 생성되었습니다!')
             navigate('/signin');
         }
     })
