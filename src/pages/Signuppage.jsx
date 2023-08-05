@@ -10,6 +10,17 @@ const Signuppage = () => {
   });
   const [isValid, setIsValid] = useState(false);
 
+  // 리다이렉트
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("access_token");
+    console.log(loggedInUser);
+    if (!!loggedInUser) {
+      navigate('/todo')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   // 이메일 유효성 검사
   const validateEmail = (email) => {
     const re = /@/;
