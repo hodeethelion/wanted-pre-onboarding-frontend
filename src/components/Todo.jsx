@@ -55,7 +55,8 @@ const Todo = ({ setting, refreshTodos }) => {
       console.log(updateTodo);
       const access_token = localStorage.getItem("access_token");
       const response = await axios.put(
-        `http://localhost:8000/todos/${setting.id}`,
+        // `http://localhost:8000/todos/${setting.id}`,
+        `${API.TODO}/${setting.id}`,
         {
           todo: updateTodo,
           isCompleted: setting.isCompleted,
@@ -86,7 +87,8 @@ const Todo = ({ setting, refreshTodos }) => {
 
       const access_token = localStorage.getItem("access_token");
       const response = await axios.delete(
-        `http://localhost:8000/todos/${setting.id}`,
+        // `http://localhost:8000/todos/${setting.id}`,
+        `${API.TODO}/${setting.id}`,
         {
           headers: {
             Authorization: `Bearer ${access_token}`,
