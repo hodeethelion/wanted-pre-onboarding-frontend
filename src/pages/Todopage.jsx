@@ -45,7 +45,7 @@ const Todopage = () => {
           Todo 페이지
         </div>
         <Addbutton refreshTodos={fetchToDos} />
-        <Todolist todos={todos} />
+        <Todolist todos={todos} refreshTodos={fetchToDos} />
       </div>
     );
   }
