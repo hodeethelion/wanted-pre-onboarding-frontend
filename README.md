@@ -18,9 +18,10 @@
 ![signin](./assets/speed_signin.gif)
 
 
-- Assignment 4: 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
+- Assignment 4: 로그인 여부에 따른 리다이렉트 처리를 구현해주세요(__local storage에서 토큰 지웠을때__) 
 
-[__local storage에서 토큰 지웠을때__] <br>
+<br>
+
 ![redirection](./assets/redirection.gif)
 
 ### 3번 데모영상: todo
