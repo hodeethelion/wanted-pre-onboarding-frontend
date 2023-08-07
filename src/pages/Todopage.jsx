@@ -41,11 +41,13 @@ const Todopage = () => {
   } else {
     return (
       <div>
-        <div style={{ fontWeight: 100, fontSize: 50, color: "orange" }}>
-          Todo 페이지
+        <div className="w-screen h-screen flex justify-center items-center bg-blue-300">
+          <div className="w-1/3 h-2/3 flex flex-col justify-center items-center bg-wantedCyan rounded-3xl">
+          <h1 className="text-3xl py-16 font-bold">To do</h1>
+            <Addbutton refreshTodos={fetchToDos} />
+            <Todolist todos={todos} refreshTodos={fetchToDos} />
+          </div>
         </div>
-        <Addbutton refreshTodos={fetchToDos} />
-        <Todolist todos={todos} refreshTodos={fetchToDos} />
       </div>
     );
   }

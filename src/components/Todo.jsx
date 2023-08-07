@@ -51,7 +51,7 @@ const Todo = ({ setting, refreshTodos }) => {
     try {
       setIsLoading(true);
       console.log("updating name of todo ");
-      console.log(updateTodo)
+      console.log(updateTodo);
       const access_token = localStorage.getItem("access_token");
       const response = await axios.put(
         `http://localhost:8000/todos/${setting.id}`,
@@ -67,14 +67,15 @@ const Todo = ({ setting, refreshTodos }) => {
         }
       );
     } catch (error) {
-      console.error("There was an error updating the todo:", error.response.data);
+      console.error(
+        "There was an error updating the todo:",
+        error.response.data
+      );
     } finally {
       refreshTodos();
       setIsLoading(false);
     }
-
-  }
-
+  };
 
   const deleteTodo = async () => {
     console.log("삭제");
@@ -105,19 +106,30 @@ const Todo = ({ setting, refreshTodos }) => {
       {isModifying ? (
         // Modify mode
         <div>
-          <input data-testid="modify-input" value={modifiedInput} onChange={(e)=>setModifiedInput(e.target.value)}/>
-          <button 
-            data-testid="submit-button" 
+          <input
+            className="w-30 pl-3 rounded-xl focus:blue-800 border-spacing-2"
+            data-testid="modify-input"
+            value={modifiedInput}
+            onChange={(e) => setModifiedInput(e.target.value)}
+          />
+          <button
+            data-testid="submit-button"
+            className="text-white bg-blue-400 rounded-full mr-2 mb-2 px-5"
             onClick={() => {
               // Logic to submit changes
-              // 내가 하고 싶은것 눌렀을 때 새로운 todo 뜨도록 
-              console.log(modifiedInput)
+              // 내가 하고 싶은것 눌렀을 때 새로운 todo 뜨도록
+              console.log(modifiedInput);
               changeTodo(modifiedInput);
-              closeChange(); 
-            }}>
+              closeChange();
+            }}
+          >
             제출
           </button>
-          <button data-testid="cancel-button" onClick={closeChange}>
+          <button
+            data-testid="cancel-button"
+            className="text-white bg-rose-300 rounded-full mr-2 mb-2 px-5 "
+            onClick={closeChange}
+          >
             취소
           </button>
         </div>
@@ -126,16 +138,31 @@ const Todo = ({ setting, refreshTodos }) => {
         <li>
           <label>
             <input
+              className="w-5 h-5"
               type="checkbox"
               checked={isChecked}
               onChange={handleCheckboxChange}
               disabled={isLoading}
             />
-            <span>{setting.todo}</span>
-            <button data-testid="modify-button" onClick={openChange}>
+            <div
+              className={`inline text-xl ml-2 mr-2 ${
+                isChecked ? "line-through" : ""
+              }`}
+            >
+              {setting.todo}
+            </div>
+            <button
+              className="text-white bg-blue-400 rounded-full mr-2 mb-2 px-5"
+              data-testid="modify-button"
+              onClick={openChange}
+            >
               수정
             </button>
-            <button data-testid="delete-button" onClick={deleteTodo}>
+            <button
+              className="text-white bg-rose-500 rounded-full mr-2 mb-2 px-5 "
+              data-testid="delete-button"
+              onClick={deleteTodo}
+            >
               삭제
             </button>
           </label>

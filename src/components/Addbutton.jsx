@@ -21,8 +21,8 @@ const Addbutton = ({ refreshTodos }) => {
         console.log(response);
         if (response.status === 201) {
           console.log("todo가 한 개 추가되었습니다!");
-          refreshTodos();  // Re-fetch todos after adding
-          setToDo('')
+          refreshTodos(); // Re-fetch todos after adding
+          setToDo("");
         }
       });
   };
@@ -30,6 +30,7 @@ const Addbutton = ({ refreshTodos }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          className="w-30 pl-3 rounded-xl focus:blue-800 border-spacing-2"
           type="text"
           id="text"
           value={todo}
@@ -38,7 +39,14 @@ const Addbutton = ({ refreshTodos }) => {
           }}
           data-testid="new-todo-input"
         />
-        <button data-testid="new-todo-add-button">추가</button>
+        <div className="w-10 inline">
+          <button
+            className="text-white bg-blue-700 rounded-full mr-2 mb-2 px-6"
+            data-testid="new-todo-add-button"
+          >
+            추가
+          </button>
+        </div>
       </form>
     </div>
   );
