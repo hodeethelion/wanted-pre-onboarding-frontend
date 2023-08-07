@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Todo = ({ setting, refreshTodos }) => {
-  // console.log(setting);
+  const [isModifying, setIsModifying] = useState(false);
   const [isChecked, setIsChecked] = useState(setting.isCompleted);
   const [isLoading, setIsLoading] = useState(false);
+  const openChange = () => {
+    setIsModifying(true);
+  };
+
+  const closeChange = () => {
+    setIsModifying(false);
+  };
 
   const handleCheckboxChange = async () => {
     const newCheckedState = !isChecked;
@@ -64,21 +71,42 @@ const Todo = ({ setting, refreshTodos }) => {
 
   return (
     <div>
-      <li>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-            disabled={isLoading}
-          />
-          <span>{setting.todo}</span>
-          <button data-testid="modify-button">수정</button>
-          <button data-testid="delete-button" onClick={deleteTodo}>
-            삭제
+      {isModifying ? (
+        // Modify mode
+        <div>
+          <input data-testid="modify-input" />
+          <button 
+            data-testid="submit-button" 
+            onClick={() => {
+              // Logic to submit changes
+              closeChange(); 
+            }}>
+            제출
           </button>
-        </label>
-      </li>
+          <button data-testid="cancel-button" onClick={closeChange}>
+            취소
+          </button>
+        </div>
+      ) : (
+        // Default display mode
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+              disabled={isLoading}
+            />
+            <span>{setting.todo}</span>
+            <button data-testid="modify-button" onClick={openChange}>
+              수정
+            </button>
+            <button data-testid="delete-button" onClick={deleteTodo}>
+              삭제
+            </button>
+          </label>
+        </li>
+      )}
     </div>
   );
 };
