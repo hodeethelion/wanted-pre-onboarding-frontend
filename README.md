@@ -4,6 +4,7 @@
 + 프로젝트의 실행 방법: 
   1. `$ npm install`
   2. `$ npm start`
++ 프로젝트 링크: [테스트 해보기](https://wanted-pre-onboarding-frontend-eta-two.vercel.app/)
 ---
 ## 데모영상
 ### 1번 데모영상: Sign up
