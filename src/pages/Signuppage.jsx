@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../utils/config";
 
 const Signuppage = () => {
   const navigate = useNavigate();
@@ -43,7 +44,10 @@ const Signuppage = () => {
     e.preventDefault();
     console.log("form: ", form);
     axios
-      .post("http://localhost:8000/auth/signup", form)
+      .post(
+        // "http://localhost:8000/auth/signup", 
+        `${API.SIGNUP}`,
+        form)
       .then((response) => {
         console.log(response);
         if (response.status === 201) {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API } from "../utils/config";
 
 const Todo = ({ setting, refreshTodos }) => {
   const [isModifying, setIsModifying] = useState(false);
@@ -28,7 +29,7 @@ const Todo = ({ setting, refreshTodos }) => {
       console.log("updating checkbox");
       const access_token = localStorage.getItem("access_token");
       const response = await axios.put(
-        `http://localhost:8000/todos/${setting.id}`,
+        `${API.TODO}/${setting.id}`,
         {
           todo: setting.todo,
           isCompleted: newCheckedState,

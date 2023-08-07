@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API } from "../utils/config";
 
 const Addbutton = ({ refreshTodos }) => {
   const [todo, setToDo] = useState("");
@@ -8,7 +9,8 @@ const Addbutton = ({ refreshTodos }) => {
     const access_token = localStorage.getItem("access_token");
     axios
       .post(
-        "http://localhost:8000/todos",
+        // "http://localhost:8000/todos",
+        `${API.TODO}`,
         { todo },
         {
           headers: {

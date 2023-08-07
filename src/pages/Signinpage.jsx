@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../utils/config";
 
 const Signinpage = () => {
   const navigate = useNavigate();
@@ -44,7 +45,11 @@ const Signinpage = () => {
     e.preventDefault();
     console.log("form: ", form);
     axios
-      .post("http://localhost:8000/auth/signin", form)
+      .post(
+        // "http://localhost:8000/auth/signin",
+        `${API.SIGNIN}`,
+        form
+      )
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
@@ -82,10 +87,13 @@ const Signinpage = () => {
               />
             </div>
             {!form.email.includes("@") && (
-                <div className="flex items-center justify-center py-1">
-                <p className="text-sm text-blue-800 font-bold"> 이메일에 @ 포함해주세요!</p>
-                </div>
-              )}
+              <div className="flex items-center justify-center py-1">
+                <p className="text-sm text-blue-800 font-bold">
+                  {" "}
+                  이메일에 @ 포함해주세요!
+                </p>
+              </div>
+            )}
             <div>
               <div className="flex flex-row">
                 <p className="w-[5rem] text-xl" htmlFor="password">
@@ -102,9 +110,12 @@ const Signinpage = () => {
                   }}
                 />
               </div>
-              {(form.password.length< 8) && (
+              {form.password.length < 8 && (
                 <div className="flex items-center justify-center py-1">
-                <p className="text-sm text-blue-800 font-bold"> 비밀번호는 최소 8자리 입니다! </p>
+                  <p className="text-sm text-blue-800 font-bold">
+                    {" "}
+                    비밀번호는 최소 8자리 입니다!{" "}
+                  </p>
                 </div>
               )}
             </div>
